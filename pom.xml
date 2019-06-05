@@ -21,7 +21,7 @@
 
   <groupId>com.celeral</groupId>
   <artifactId>parent</artifactId>
-  <version>1.0.1</version>
+  <version>1.1.0</version>
   <packaging>pom</packaging>
 
   <name>${project.organization.name} - ${project.artifactId}</name>
@@ -71,7 +71,7 @@
       <dependency>
         <groupId>com.celeral</groupId>
         <artifactId>utils</artifactId>
-        <version>1.2.0</version>
+        <version>1.3.0</version>
       </dependency>
       <dependency>
         <groupId>com.esotericsoftware</groupId>
