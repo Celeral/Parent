@@ -38,6 +38,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.javadoc.source>8</maven.javadoc.source>
+    <java.release>8</java.release>
   </properties>
 
   <organization>
@@ -139,7 +140,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <release>11</release>
+		<release>${java.release}</release>
           <compilerArgs>
             <arg>-Xlint:deprecation</arg>
             <arg>-Xlint:unchecked</arg>
