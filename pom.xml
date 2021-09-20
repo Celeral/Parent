@@ -21,7 +21,7 @@
 
   <groupId>com.celeral</groupId>
   <artifactId>parent</artifactId>
-  <version>2.1.4</version>
+  <version>2.1.5</version>
   <packaging>pom</packaging>
 
   <name>${project.organization.name} - ${project.artifactId}</name>
@@ -113,6 +113,77 @@
   </dependencyManagement>
 
   <build>
+    <pluginManagement>
+      <plugins>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>flatten-maven-plugin</artifactId>
+              <version>1.2.5</version>
+              <executions>
+                <execution>
+                  <phase>process-resources</phase>
+                  <goals>
+                    <goal>flatten</goal>
+                  </goals>
+                </execution>
+              </executions>
+              <configuration>
+                <updatePomFile>true</updatePomFile>
+                <outputDirectory>${project.build.directory}</outputDirectory>
+                <embedBuildProfileDependencies>true</embedBuildProfileDependencies>
+                <pomElements>
+                  <name/>
+                  <url/>
+                  <description/>
+                  <organization/>
+                  <developers/>
+                  <scm/>
+                  <properties />
+		  <pluginManagement />
+		  <dependencyManagement />
+                </pomElements>
+              </configuration>
+            </plugin>
+	    <plugin>
+	      <groupId>com.diffplug.spotless</groupId>
+	      <artifactId>spotless-maven-plugin</artifactId>
+	      <version>2.0.2</version>
+	      <configuration>
+		<java>
+		  <licenseHeader>
+		    <content>
+		      /*
+		      * Copyright © $YEAR Celeral.
+		      *
+		      * Licensed under the Apache License, Version 2.0 (the "License");
+		      * you may not use this file except in compliance with the License.
+		      * You may obtain a copy of the License at
+		      *
+		      * http://www.apache.org/licenses/LICENSE-2.0
+		      *
+		      * Unless required by applicable law or agreed to in writing, software
+		      * distributed under the License is distributed on an "AS IS" BASIS,
+		      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+		      * See the License for the specific language governing permissions and
+		      * limitations under the License.
+		      */
+		    </content>
+		  </licenseHeader>
+		  <googleJavaFormat>
+		    <version>1.7</version>
+		  </googleJavaFormat>
+		  <removeUnusedImports/>
+		  <importOrder>
+		    <!-- The order here is the order in of our increasing influence in getting the code changed -->
+		    <order>
+		      java,javax,com,net,org,org.slf4j,org.apache,com.celeral,com.celeral.cluster
+		    </order>
+		  </importOrder>
+		</java>
+	      </configuration>
+	    </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -184,32 +255,6 @@
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-jar-plugin</artifactId>
               <version>3.2.0</version>
-            </plugin>
-            <plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>flatten-maven-plugin</artifactId>
-              <version>1.2.5</version>
-              <executions>
-                <execution>
-                  <phase>process-resources</phase>
-                  <goals>
-                    <goal>flatten</goal>
-                  </goals>
-                </execution>
-              </executions>
-              <configuration>
-                <updatePomFile>true</updatePomFile>
-                <outputDirectory>${project.build.directory}</outputDirectory>
-                <embedBuildProfileDependencies>true</embedBuildProfileDependencies>
-                <pomElements>
-                  <name/>
-                  <url/>
-                  <description/>
-                  <organization/>
-                  <developers/>
-                  <scm/>
-                </pomElements>
-              </configuration>
             </plugin>
           </plugins>
         </pluginManagement>
@@ -305,6 +350,69 @@
             </configuration>
           </plugin>
         </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>external-build-dir</id>
+      <activation>
+	<activeByDefault>false</activeByDefault>
+	<property>
+	  <name>external.build.root</name>
+	</property>
+      </activation>
+      <build>
+	<plugins>
+	  <plugin>
+	    <groupId>com.alexecollins.maven.plugin</groupId>
+	    <artifactId>script-maven-plugin</artifactId>
+	    <version>1.0.0</version>
+	    <executions>
+	      <execution>
+		<id>prep-work-tree</id>
+		<goals><goal>execute</goal></goals>
+		<phase>initialize</phase>
+		<configuration>
+		  <script>
+    import java.nio.file.*
+    def dir = "${external.build.root}/${project.groupId}:${project.artifactId}"
+    println "using Maven dir ${dir}"
+    def dirPath = Paths.get(dir)
+    if (!Files.exists(dirPath)) {
+      Files.createDirectories(dirPath)
+    }
+    def target = Paths.get("${project.build.directory}")
+    if (!Files.exists(target)) {
+	Files.createSymbolicLink(target, dirPath)
+    }</script>
+	      </configuration>
+	      </execution>
+	      <execution>
+		<id>drop-symlink</id>
+		<goals><goal>execute</goal></goals>
+		<phase>clean</phase>
+		<configuration>
+		  <script>
+    import java.nio.file.*
+    def target = Paths.get("${project.build.directory}")
+    if (Files.isSymbolicLink(target)) {
+	Files.delete(target)
+    }
+    </script>
+		</configuration>
+	      </execution>
+	    </executions>
+	    <dependencies>
+	      <dependency>
+		<groupId>org.codehaus.groovy</groupId>
+		<artifactId>groovy</artifactId>
+		<version>1.8.6</version>
+	      </dependency>
+	    </dependencies>
+	    <configuration>
+	      <language>groovy</language>
+	    </configuration>
+	  </plugin>
+	</plugins>
       </build>
     </profile>
   </profiles>
