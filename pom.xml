@@ -77,7 +77,7 @@
       <dependency>
         <groupId>com.celeral</groupId>
         <artifactId>utils</artifactId>
-        <version>2.0.4</version>
+        <version>2.1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.esotericsoftware</groupId>
@@ -113,6 +113,7 @@
   </dependencyManagement>
 
   <build>
+      <directory>${project.basedir}/target/${project.build.subdir}</directory>
     <pluginManagement>
       <plugins>
             <plugin>
@@ -374,15 +375,20 @@
 		<configuration>
 		  <script>
     import java.nio.file.*
-    def dir = "${external.build.root}/${project.groupId}:${project.artifactId}"
+    def dir = $/${external.build.root}/${project.groupId}#${project.artifactId}/$.replaceAll("\"", "")
     println "using Maven dir ${dir}"
     def dirPath = Paths.get(dir)
     if (!Files.exists(dirPath)) {
       Files.createDirectories(dirPath)
     }
-    def target = Paths.get("${project.build.directory}")
+    def buildDirectory = $/${project.build.directory}/$.replaceAll("\"", "")
+    def target = Paths.get(buildDirectory)
+              def parent = target.getParent()
+              if (!Files.exists(parent)) {
+                Files.createDirectories(parent)
+              }
     if (!Files.exists(target)) {
-	Files.createSymbolicLink(target, dirPath)
+	  Files.createSymbolicLink(target, dirPath)
     }</script>
 	      </configuration>
 	      </execution>
@@ -392,20 +398,23 @@
 		<phase>clean</phase>
 		<configuration>
 		  <script>
-    import java.nio.file.*
-    def target = Paths.get("${project.build.directory}")
-    if (Files.isSymbolicLink(target)) {
-	Files.delete(target)
-    }
-    </script>
+              import java.nio.file.*
+
+              def dir = $/${external.build.root}/${project.groupId}#${project.artifactId}/$.replaceAll("\"", "")
+              def dirPath = new File(dir)
+              if (dirPath.exists()) {
+                println "deleting ${dir}"
+                dirPath.deleteDir()
+              }
+          </script>
 		</configuration>
 	      </execution>
 	    </executions>
 	    <dependencies>
 	      <dependency>
 		<groupId>org.codehaus.groovy</groupId>
-		<artifactId>groovy</artifactId>
-		<version>1.8.6</version>
+		<artifactId>groovy-bsf</artifactId>
+		<version>3.0.9</version>
 	      </dependency>
 	    </dependencies>
 	    <configuration>
