@@ -17,424 +17,452 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.celeral</groupId>
-  <artifactId>parent</artifactId>
-  <version>2.1.5</version>
-  <packaging>pom</packaging>
+    <groupId>com.celeral</groupId>
+    <artifactId>parent</artifactId>
+    <version>2.1.5</version>
+    <packaging>pom</packaging>
 
-  <name>${project.organization.name} - ${project.artifactId}</name>
-  <url>${project.organization.url}product</url>
-  <description>Parent pom for all the ${project.organization.name} projects.</description>
+    <name>${project.organization.name} - ${project.artifactId}</name>
+    <url>${project.organization.url}product</url>
+    <description>Parent pom for all the ${project.organization.name} projects.</description>
 
-  <licenses>
-    <license>
-      <name>The Apache License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.javadoc.source>8</maven.javadoc.source>
-    <java.release>8</java.release>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.javadoc.source>8</maven.javadoc.source>
+        <java.release>8</java.release>
+    </properties>
 
-  <organization>
-    <name>Celeral</name>
-    <url>http://www.celeral.com/</url>
-  </organization>
+    <organization>
+        <name>Celeral</name>
+        <url>http://www.celeral.com/</url>
+    </organization>
 
-  <developers>
-    <developer>
-      <id>243826</id>
-      <name>Chetan Narsude</name>
-      <email>chetan@celeral.com</email>
-      <organization>Celeral</organization>
-      <roles>
-        <role>architect</role>
-        <role>developer</role>
-      </roles>
-    </developer>
-  </developers>
+    <developers>
+        <developer>
+            <id>243826</id>
+            <name>Chetan Narsude</name>
+            <email>chetan@celeral.com</email>
+            <organization>Celeral</organization>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
 
-  <scm>
-    <connection>scm:git:git@github.com:${project.organization.name}</connection>
-    <developerConnection>scm:git:git@github.com:${project.organization.name}</developerConnection>
-    <url>git@github.com:${project.organization.name}</url>
-  </scm>
+    <scm>
+        <connection>scm:git:git@github.com:${project.organization.name}</connection>
+        <developerConnection>scm:git:git@github.com:${project.organization.name}</developerConnection>
+        <url>git@github.com:${project.organization.name}</url>
+    </scm>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-bom</artifactId>
-        <version>2.13.3</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-      <dependency>
-        <groupId>com.celeral</groupId>
-        <artifactId>utils</artifactId>
-        <version>2.1.1-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>com.esotericsoftware</groupId>
-        <artifactId>kryo</artifactId>
-        <version>4.0.2</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>3.8.1</version>
-      </dependency>
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.12</version>
-      </dependency>
-      <dependency>
-        <groupId>org.hamcrest</groupId>
-        <artifactId>hamcrest-core</artifactId>
-        <version>2.1</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-beanutils</groupId>
-        <artifactId>commons-beanutils</artifactId>
-        <version>1.9.4</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>2.12.4</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>2.14.1</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.celeral</groupId>
+                <artifactId>utils</artifactId>
+                <version>2.1.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>4.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.8.1</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-core</artifactId>
+                <version>2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.12.4</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-  <build>
-      <directory>${project.basedir}/target/${project.build.subdir}</directory>
-    <pluginManagement>
-      <plugins>
-            <plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>flatten-maven-plugin</artifactId>
-              <version>1.2.5</version>
-              <executions>
-                <execution>
-                  <phase>process-resources</phase>
-                  <goals>
-                    <goal>flatten</goal>
-                  </goals>
-                </execution>
-              </executions>
-              <configuration>
-                <updatePomFile>true</updatePomFile>
-                <outputDirectory>${project.build.directory}</outputDirectory>
-                <embedBuildProfileDependencies>true</embedBuildProfileDependencies>
-                <pomElements>
-                  <name/>
-                  <url/>
-                  <description/>
-                  <organization/>
-                  <developers/>
-                  <scm/>
-                  <properties />
-		  <pluginManagement />
-		  <dependencyManagement />
-                </pomElements>
-              </configuration>
-            </plugin>
-	    <plugin>
-	      <groupId>com.diffplug.spotless</groupId>
-	      <artifactId>spotless-maven-plugin</artifactId>
-	      <version>2.0.2</version>
-	      <configuration>
-		<java>
-		  <licenseHeader>
-		    <content>
-		      /*
-		      * Copyright © $YEAR Celeral.
-		      *
-		      * Licensed under the Apache License, Version 2.0 (the "License");
-		      * you may not use this file except in compliance with the License.
-		      * You may obtain a copy of the License at
-		      *
-		      * http://www.apache.org/licenses/LICENSE-2.0
-		      *
-		      * Unless required by applicable law or agreed to in writing, software
-		      * distributed under the License is distributed on an "AS IS" BASIS,
-		      * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-		      * See the License for the specific language governing permissions and
-		      * limitations under the License.
-		      */
-		    </content>
-		  </licenseHeader>
-		  <googleJavaFormat>
-		    <version>1.7</version>
-		  </googleJavaFormat>
-		  <removeUnusedImports/>
-		  <importOrder>
-		    <!-- The order here is the order in of our increasing influence in getting the code changed -->
-		    <order>
-		      java,javax,com,net,org,org.slf4j,org.apache,com.celeral,com.celeral.cluster
-		    </order>
-		  </importOrder>
-		</java>
-	      </configuration>
-	    </plugin>
-      </plugins>
-    </pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-		<release>${java.release}</release>
-          <compilerArgs>
-            <arg>-Xlint:deprecation</arg>
-            <arg>-Xlint:unchecked</arg>
-          </compilerArgs>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.0.0-M3</version>
-        <executions>
-          <execution>
-            <id>enforce-maven</id>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <requireMavenVersion>
-                  <version>[3.5.0,)</version>
-                  <message>${project.name} build requires Maven 3.5.0 or above.</message>
-                </requireMavenVersion>
-              </rules>
-            </configuration>
-          </execution>
-          <execution>
-            <id>enforce-release-dependencies</id>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <requireReleaseDeps>
-                  <message>Snapshots dependencies are not allowed for release build.</message>
-                  <onlyWhenRelease>true</onlyWhenRelease>
-                </requireReleaseDeps>
-              </rules>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <version>3.0.5</version>
-      </plugin>
-    </plugins>
-  </reporting>
-
-  <profiles>
-    <profile>
-      <id>release</id>
-      <build>
+    <build>
+        <directory>${project.basedir}/target/${project.build.subdir}</directory>
         <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-jar-plugin</artifactId>
-              <version>3.2.0</version>
-            </plugin>
-          </plugins>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.2.0</version>
+                    <configuration>
+                        <archive>
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                                <classpathPrefix>${manifest.classpath.prefix}</classpathPrefix>
+                                <classpathLayoutType>${manifest.classpath.layout}</classpathLayoutType>
+                                <mainClass>${manifest.main.class}</mainClass>
+                                <useUniqueVersions>false</useUniqueVersions>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>1.2.5</version>
+                    <executions>
+                        <execution>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>flatten</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <updatePomFile>true</updatePomFile>
+                        <outputDirectory>${project.build.directory}</outputDirectory>
+                        <embedBuildProfileDependencies>true</embedBuildProfileDependencies>
+                        <pomElements>
+                            <name/>
+                            <url/>
+                            <description/>
+                            <organization/>
+                            <developers/>
+                            <scm/>
+                            <properties/>
+                            <pluginManagement/>
+                            <dependencyManagement/>
+                        </pomElements>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M4</version>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <project.build.directory>${project.build.directory}</project.build.directory>
+                            <project.basedir>${project.basedir}</project.basedir>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.diffplug.spotless</groupId>
+                    <artifactId>spotless-maven-plugin</artifactId>
+                    <version>2.0.2</version>
+                    <configuration>
+                        <java>
+                            <licenseHeader>
+                                <content>
+                                    /*
+                                    * Copyright © $YEAR Celeral.
+                                    *
+                                    * Licensed under the Apache License, Version 2.0 (the "License");
+                                    * you may not use this file except in compliance with the License.
+                                    * You may obtain a copy of the License at
+                                    *
+                                    * http://www.apache.org/licenses/LICENSE-2.0
+                                    *
+                                    * Unless required by applicable law or agreed to in writing, software
+                                    * distributed under the License is distributed on an "AS IS" BASIS,
+                                    * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+                                    * See the License for the specific language governing permissions and
+                                    * limitations under the License.
+                                    */
+                                </content>
+                            </licenseHeader>
+                            <googleJavaFormat>
+                                <version>1.7</version>
+                            </googleJavaFormat>
+                            <removeUnusedImports/>
+                            <importOrder>
+                                <!-- The order here is the order in of our increasing influence in getting the code changed -->
+                                <order>
+                                    java,javax,com,net,org,org.slf4j,org.apache,com.celeral,com.celeral.cluster
+                                </order>
+                            </importOrder>
+                        </java>
+                    </configuration>
+                </plugin>
+            </plugins>
         </pluginManagement>
-
         <plugins>
-          <plugin>
-            <groupId>com.github.siom79.japicmp</groupId>
-            <artifactId>japicmp-maven-plugin</artifactId>
-            <version>0.14.3</version>
-            <configuration>
-              <oldVersion>
-                <dependency>
-                  <groupId>${project.groupId}</groupId>
-                  <artifactId>${project.artifactId}</artifactId>
-                  <version>${revision.base}</version>
-                </dependency>
-              </oldVersion>
-              <newVersion>
-                <file>
-                  <path>${project.build.directory}/${project.artifactId}-${project.version}.jar</path>
-                </file>
-              </newVersion>
-              <parameter>
-                <onlyModified>true</onlyModified>
-                <accessModifier>protected</accessModifier>
-                <breakBuildBasedOnSemanticVersioning>true</breakBuildBasedOnSemanticVersioning>
-                <onlyBinaryIncompatible>false</onlyBinaryIncompatible>
-                <includeSynthetic>false</includeSynthetic>
-                <ignoreMissingClasses>false</ignoreMissingClasses>
-              </parameter>
-            </configuration>
-            <executions>
-              <execution>
-                <phase>verify</phase>
-                <goals>
-                  <goal>cmp</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-            <version>3.0.1</version>
-            <executions>
-              <execution>
-                <id>attach-sources</id>
-                <goals>
-                  <goal>jar-no-fork</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.0.1</version>
-            <configuration>
-              <source>${maven.javadoc.source}</source>
-            </configuration>
-            <executions>
-              <execution>
-                <id>attach-javadocs</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.sonatype.plugins</groupId>
-            <artifactId>nexus-staging-maven-plugin</artifactId>
-            <version>1.6.8</version>
-            <extensions>true</extensions>
-            <configuration>
-              <serverId>ossrh</serverId>
-              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-              <autoReleaseAfterClose>true</autoReleaseAfterClose>
-            </configuration>
-          </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArgs>
+                        <arg>-Xlint:deprecation</arg>
+                        <arg>-Xlint:unchecked</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <executions>
+                    <execution>
+                        <id>enforce-maven</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>[3.5.0,)</version>
+                                    <message>${project.name} build requires Maven 3.5.0 or above.</message>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>enforce-release-dependencies</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireReleaseDeps>
+                                    <message>Snapshots dependencies are not allowed for release build.</message>
+                                    <onlyWhenRelease>true</onlyWhenRelease>
+                                </requireReleaseDeps>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>external-build-dir</id>
-      <activation>
-	<activeByDefault>false</activeByDefault>
-	<property>
-	  <name>external.build.root</name>
-	</property>
-      </activation>
-      <build>
-	<plugins>
-	  <plugin>
-	    <groupId>com.alexecollins.maven.plugin</groupId>
-	    <artifactId>script-maven-plugin</artifactId>
-	    <version>1.0.0</version>
-	    <executions>
-	      <execution>
-		<id>prep-work-tree</id>
-		<goals><goal>execute</goal></goals>
-		<phase>initialize</phase>
-		<configuration>
-		  <script>
-    import java.nio.file.*
-    def dir = $/${external.build.root}/${project.groupId}#${project.artifactId}/$.replaceAll("\"", "")
-    println "using Maven dir ${dir}"
-    def dirPath = Paths.get(dir)
-    if (!Files.exists(dirPath)) {
-      Files.createDirectories(dirPath)
-    }
-    def buildDirectory = $/${project.build.directory}/$.replaceAll("\"", "")
-    def target = Paths.get(buildDirectory)
-              def parent = target.getParent()
-              if (!Files.exists(parent)) {
-                Files.createDirectories(parent)
-              }
-    if (!Files.exists(target)) {
-	  Files.createSymbolicLink(target, dirPath)
-    }</script>
-	      </configuration>
-	      </execution>
-	      <execution>
-		<id>drop-symlink</id>
-		<goals><goal>execute</goal></goals>
-		<phase>clean</phase>
-		<configuration>
-		  <script>
-              import java.nio.file.*
+    </build>
 
-              def dir = $/${external.build.root}/${project.groupId}#${project.artifactId}/$.replaceAll("\"", "")
-              def dirPath = new File(dir)
-              if (dirPath.exists()) {
-                println "deleting ${dir}"
-                dirPath.deleteDir()
-              }
-          </script>
-		</configuration>
-	      </execution>
-	    </executions>
-	    <dependencies>
-	      <dependency>
-		<groupId>org.codehaus.groovy</groupId>
-		<artifactId>groovy-bsf</artifactId>
-		<version>3.0.9</version>
-	      </dependency>
-	    </dependencies>
-	    <configuration>
-	      <language>groovy</language>
-	    </configuration>
-	  </plugin>
-	</plugins>
-      </build>
-    </profile>
-  </profiles>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.5</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
-  <distributionManagement>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-    </repository>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.siom79.japicmp</groupId>
+                        <artifactId>japicmp-maven-plugin</artifactId>
+                        <version>0.14.3</version>
+                        <configuration>
+                            <oldVersion>
+                                <dependency>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${revision.base}</version>
+                                </dependency>
+                            </oldVersion>
+                            <newVersion>
+                                <file>
+                                    <path>${project.build.directory}/${project.artifactId}-${project.version}.jar</path>
+                                </file>
+                            </newVersion>
+                            <parameter>
+                                <onlyModified>true</onlyModified>
+                                <accessModifier>protected</accessModifier>
+                                <breakBuildBasedOnSemanticVersioning>true</breakBuildBasedOnSemanticVersioning>
+                                <onlyBinaryIncompatible>false</onlyBinaryIncompatible>
+                                <includeSynthetic>false</includeSynthetic>
+                                <ignoreMissingClasses>false</ignoreMissingClasses>
+                            </parameter>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>cmp</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <configuration>
+                            <source>${maven.javadoc.source}</source>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.8</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>external-build-dir</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>external.build.root</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.alexecollins.maven.plugin</groupId>
+                        <artifactId>script-maven-plugin</artifactId>
+                        <version>1.0.0</version>
+                        <executions>
+                            <execution>
+                                <id>prep-work-tree</id>
+                                <goals>
+                                    <goal>execute</goal>
+                                </goals>
+                                <phase>initialize</phase>
+                                <configuration>
+                                    <script>
+                                        import java.nio.file.*
+                                        def dir =
+                                        $/${external.build.root}/${project.groupId}#${project.artifactId}/$.replaceAll("\"",
+                                        "")
+                                        println "using Maven dir ${dir}"
+                                        def dirPath = Paths.get(dir)
+                                        if (!Files.exists(dirPath)) {
+                                        Files.createDirectories(dirPath)
+                                        }
+                                        def buildDirectory = $/${project.build.directory}/$.replaceAll("\"", "")
+                                        def target = Paths.get(buildDirectory)
+                                        def parent = target.getParent()
+                                        if (!Files.exists(parent)) {
+                                        Files.createDirectories(parent)
+                                        }
+                                        if (!Files.exists(target)) {
+                                        Files.createSymbolicLink(target, dirPath)
+                                        }
+                                    </script>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>drop-symlink</id>
+                                <goals>
+                                    <goal>execute</goal>
+                                </goals>
+                                <phase>clean</phase>
+                                <configuration>
+                                    <script>
+                                        import java.nio.file.*
+
+                                        def dir =
+                                        $/${external.build.root}/${project.groupId}#${project.artifactId}/$.replaceAll("\"",
+                                        "")
+                                        def dirPath = new File(dir)
+                                        if (dirPath.exists()) {
+                                        println "deleting ${dir}"
+                                        dirPath.deleteDir()
+                                        }
+                                    </script>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.codehaus.groovy</groupId>
+                                <artifactId>groovy-bsf</artifactId>
+                                <version>3.0.9</version>
+                            </dependency>
+                        </dependencies>
+                        <configuration>
+                            <language>groovy</language>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
