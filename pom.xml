@@ -21,7 +21,7 @@
 
     <groupId>com.celeral</groupId>
     <artifactId>parent</artifactId>
-    <version>2.1.5</version>
+    <version>2.1.6</version>
     <packaging>pom</packaging>
 
     <name>${project.organization.name} - ${project.artifactId}</name>
@@ -77,7 +77,7 @@
             <dependency>
                 <groupId>com.celeral</groupId>
                 <artifactId>utils</artifactId>
-                <version>2.1.1-SNAPSHOT</version>
+                <version>2.2.0</version>
             </dependency>
             <dependency>
                 <groupId>com.esotericsoftware</groupId>
@@ -92,7 +92,7 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.12</version>
+                <version>4.13.2</version>
             </dependency>
             <dependency>
                 <groupId>org.hamcrest</groupId>
@@ -361,7 +361,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.8</version>
+                        <version>1.6.13</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
