@@ -15,13 +15,12 @@
  * limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.celeral</groupId>
     <artifactId>parent</artifactId>
-    <version>2.1.7</version>
+    <version>2.1.8</version>
     <packaging>pom</packaging>
 
     <name>${project.organization.name} - ${project.artifactId}</name>
@@ -217,7 +216,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.9.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -240,8 +239,8 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>[3.5.0,)</version>
-                                    <message>${project.name} build requires Maven 3.5.0 or above.</message>
+                                    <version>[3.8.1,)</version>
+                                    <message>${project.name} build requires Maven 3.8.1 or above.</message>
                                 </requireMavenVersion>
                             </rules>
                         </configuration>
@@ -281,7 +280,7 @@
                         </configuration>
                     </execution>
                 </executions>
-                </plugin>
+            </plugin>
         </plugins>
     </build>
 
@@ -401,6 +400,7 @@
                 </property>
             </activation>
             <build>
+                <!-- <directory>${external.build.root}/${project.groupId}#${project.artifactId}</directory> -->
                 <plugins>
                     <plugin>
                         <groupId>com.alexecollins.maven.plugin</groupId>
@@ -416,22 +416,21 @@
                                 <configuration>
                                     <script>
                                         import java.nio.file.*
-                                        def dir =
-                                        $/${external.build.root}/${project.groupId}#${project.artifactId}/$.replaceAll("\"",
-                                        "")
-                                        println "using Maven dir ${dir}"
+
+                                        def dir = $/${external.build.root}/${project.groupId}#${project.artifactId}/$.replaceAll("\"", "")
+                                        println "using build dir ${dir}"
                                         def dirPath = Paths.get(dir)
                                         if (!Files.exists(dirPath)) {
-                                        Files.createDirectories(dirPath)
+                                            Files.createDirectories(dirPath)
                                         }
                                         def buildDirectory = $/${project.build.directory}/$.replaceAll("\"", "")
                                         def target = Paths.get(buildDirectory)
                                         def parent = target.getParent()
                                         if (!Files.exists(parent)) {
-                                        Files.createDirectories(parent)
+                                            Files.createDirectories(parent)
                                         }
                                         if (!Files.exists(target)) {
-                                        Files.createSymbolicLink(target, dirPath)
+                                            Files.createSymbolicLink(target, dirPath)
                                         }
                                     </script>
                                 </configuration>
@@ -446,13 +445,11 @@
                                     <script>
                                         import java.nio.file.*
 
-                                        def dir =
-                                        $/${external.build.root}/${project.groupId}#${project.artifactId}/$.replaceAll("\"",
-                                        "")
+                                        def dir = $/${external.build.root}/${project.groupId}#${project.artifactId}/$.replaceAll("\"","")
                                         def dirPath = new File(dir)
                                         if (dirPath.exists()) {
-                                        println "deleting ${dir}"
-                                        dirPath.deleteDir()
+                                            println "deleting build dir ${dir}"
+                                            dirPath.deleteDir()
                                         }
                                     </script>
                                 </configuration>
