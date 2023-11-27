@@ -20,7 +20,7 @@
 
     <groupId>com.celeral</groupId>
     <artifactId>parent</artifactId>
-    <version>2.1.8</version>
+    <version>2.1.9</version>
     <packaging>pom</packaging>
 
     <name>${project.organization.name} - ${project.artifactId}</name>
@@ -37,7 +37,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.javadoc.source>8</maven.javadoc.source>
-        <java.release>8</java.release>
+        <maven.compiler.release>8</maven.compiler.release>
     </properties>
 
     <organization>
@@ -118,7 +118,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.3.0</version>
                     <configuration>
                         <archive>
                             <addMavenDescriptor>false</addMavenDescriptor>
@@ -133,9 +133,28 @@
                     </configuration>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.6.0</version>
+                    <executions>
+                        <execution>
+                            <id>copy-dependencies</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/${manifest.classpath.prefix}</outputDirectory>
+                                <useRepositoryLayout>false</useRepositoryLayout>
+                                <includeScope>runtime</includeScope>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>flatten-maven-plugin</artifactId>
-                    <version>1.2.5</version>
+                    <version>1.5.0</version>
                     <executions>
                         <execution>
                             <phase>process-resources</phase>
@@ -164,7 +183,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M4</version>
+                    <version>3.1.2</version>
                     <configuration>
                         <systemPropertyVariables>
                             <project.build.directory>${project.build.directory}</project.build.directory>
@@ -175,7 +194,7 @@
                 <plugin>
                     <groupId>com.diffplug.spotless</groupId>
                     <artifactId>spotless-maven-plugin</artifactId>
-                    <version>2.0.2</version>
+                    <version>2.41.0</version>
                     <configuration>
                         <java>
                             <licenseHeader>
@@ -198,7 +217,7 @@
                                 </content>
                             </licenseHeader>
                             <googleJavaFormat>
-                                <version>1.7</version>
+                                <version>1.18.1</version>
                             </googleJavaFormat>
                             <removeUnusedImports/>
                             <importOrder>
@@ -216,7 +235,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.9.0</version>
+                <version>3.11.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -229,7 +248,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>3.4.1</version>
                 <executions>
                     <execution>
                         <id>enforce-maven</id>
@@ -302,7 +321,7 @@
                     <plugin>
                         <groupId>com.github.siom79.japicmp</groupId>
                         <artifactId>japicmp-maven-plugin</artifactId>
-                        <version>0.14.3</version>
+                        <version>0.18.2</version>
                         <configuration>
                             <oldVersion>
                                 <dependency>
@@ -337,7 +356,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>3.0.1</version>
+                        <version>3.3.0</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -350,7 +369,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.0.1</version>
+                        <version>3.6.0</version>
                         <configuration>
                             <source>${maven.javadoc.source}</source>
                         </configuration>
@@ -366,7 +385,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
+                        <version>3.1.0</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -429,7 +448,8 @@
                                         if (!Files.exists(parent)) {
                                             Files.createDirectories(parent)
                                         }
-                                        if (!Files.exists(target)) {
+                                        if (!Files.exists(target, LinkOption.NOFOLLOW_LINKS)) {
+                                            println "${target} does not exist"
                                             Files.createSymbolicLink(target, dirPath)
                                         }
                                     </script>
@@ -459,7 +479,7 @@
                             <dependency>
                                 <groupId>org.codehaus.groovy</groupId>
                                 <artifactId>groovy-bsf</artifactId>
-                                <version>3.0.9</version>
+                                <version>3.0.19</version>
                             </dependency>
                         </dependencies>
                         <configuration>
